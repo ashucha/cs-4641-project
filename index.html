@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="./index.css">
+
+  <title>COVID Vaccine Recommender</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top bg-light">
+    <div class="container">
+      <a href="/" class="navbar-brand px-1 py-1">
+        COVID Vaccine Recommender
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item px-1 py-1">
+            <a href="#intro" class="nav-link">
+              Introduction
+            </a>
+          </li>
+          <li class="nav-item px-1 py-1">
+            <a href="#probDef" class="nav-link">
+              Problem Definition
+            </a>
+          </li>
+          <li class="nav-item px-1 py-1">
+            <a href="#method" class="nav-link">
+              Method
+            </a>
+          </li>
+          <li class="nav-item px-1 py-1">
+            <a href="#data" class="nav-link">
+              Data
+            </a>
+          </li>
+          <li class="nav-item px-1 py-1">
+            <a href="#potResDisc" class="nav-link">
+              Potential Results and Discussion
+            </a>
+          </li>
+          <li class="nav-item px-1 py-1">
+            <a href="#presentation" class="nav-link">
+              Presentation
+            </a>
+          </li>
+          <li class="nav-item px-1 py-1">
+            <a href="#gantt" class="nav-link">
+              Gantt Chart
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="container" id="intro">
+    <h1 class="display-1">
+      Introduction
+    </h1>
+    <p>
+      Though COVID-19 vaccine has proven its efficiency, many still remain hesitant due to potential side effects. Side
+      effects include the majority reporting mild to moderate symptoms, such as fever and fatigue, but these symptoms
+      generally would not cause long-term conditions, though rare cases of severe symptoms or potential death are
+      possible. We will use machine learning to build a model that helps people make a decision of whether to take the
+      vaccine or not by predicting possible outcomes/syndromes of a person taking the vaccine given indicating factors,
+      such as age and gender.
+    </p>
+  </section>
+
+  <section class="container" id="probDef">
+    <h1 class="display-1">
+      Problem Definition
+    </h1>
+    <p>
+      There are a couple of reasons why we want to tackle the challenge of vaccine hesitancy through this project. The
+      first is that a large enough portion of the population is hesitant to get the vaccine because herd immunity is far
+      from achievable at the current level. Specifically, only about 83% of Americans have received at least one dose
+      while only 71% is fully vaccinated. According to the Mayo Clinic, “94% of the population must be immune to
+      interrupt the chain of transmission” of COVID-19, a highly optimistic goal at this rate. The second reason why we
+      chose this issue is due to new developments in COVID-19 and the fight against it. This includes the fact that the
+      FDA is looking into authorizing the vaccine for children under the age of 5, a fourth dose expected to be
+      available soon, and COVID cases recently rising. These developments give lots of opportunities for misinformation
+      to expand beyond what has already been spread.
+    </p>
+  </section>
+
+  <section class="container" id="method">
+    <h1 class="display-1">
+      Method
+    </h1>
+    <p>
+      The potential methods that we may use include K-means clustering or hierarchical clusterings based on the number
+      of data and the number of factors of data. According to the data we have already got, the factors include age,
+      sex, weight and so on. Since the factors are all discrete variables, thus classification may be another method
+      that we will consider.
+    </p>
+  </section>
+
+  <section class="container" id="data">
+    <h1 class="display-1">
+      Data
+    </h1>
+    <p>
+      We have already found some data online that we would analyze. The one dataset is from the FDA (US Food and Drug
+      Administration) and CDC (Centers for Disease Control and Prevention), and the other one is from New York Times. We
+      will try to get more official and more reliable data from more official websites. There are two datasets that we
+      have downloaded so far: worldwide percentage of population vaccinated and worldwide adverse reactions after
+      vaccination. By using clustering methods, we will take deeper analysis on dividing them into several groups based
+      on the factors of ages, gender, symptoms after vaccination, times for vaccination, and etc.
+    </p>
+  </section>
+
+  <section class="container" id="potResDisc">
+    <h1 class="display-1">
+      Potential Results and Discussion
+    </h1>
+    <p>
+      We currently plan to use the adjusted_rand_score metric from sklearn to evaluate our clustering performance. This
+      metric compares the predicted clusters with a defined ground truth to output the accuracy. Additionally, we expect
+      to find that patient demographics do correlate with the severity of vaccine-related side effects. At this moment,
+      we don't know which specific features will correlate better with the side effects, but that is the reason we are
+      undertaking this project.
+    </p>
+  </section>
+
+  <section class="container" id="presentation">
+    <h1 class="display-1">
+      Presentation
+    </h1>
+    <video class="col-lg-12" src="./assets/video/project-proposal.mp4" controls>
+
+    </video>
+  </section>
+
+  <section class="container" id="gantt">
+    <h1 class="display-1">
+      Gantt Chart
+    </h1>
+    <iframe class="col-lg-12"
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTBT74q5-KPR5MEZxuHLR9GAAU4KtLAYw_57hNiyMRV7Z7YHf-Pk2tD7eb22mdaoA/pubhtml?widget=true&amp;headers=false">
+    </iframe>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
