@@ -113,13 +113,53 @@
             Method
         </h1>
         <p>
-            The potential methods that we may use include K-means clustering or hierarchical clusterings based on the
-            number
-            of data and the number of factors of data. According to the data we have already got, the factors include
-            age,
-            sex, weight and so on. Since the factors are all discrete variables, thus classification may be another
-            method
-            that we will consider.
+            Our problem is a classification problem and thus, we used classification models to try and solve it. We have
+            decided to use K-means, Decision Tree Classifier, Random Forest Classifier, Logistic Regression, and
+            Multi-Layer Perceptron as our algorithms. These models were implement using the <code>scikit-learn</code>
+            Python library.
+        </p>
+        <p>
+            In this case, K-means is most helpful when our data is somewhat well-separated into two main clusters
+            (recovered or not recovered from COVID vaccine complications), in which case it will use hard classification
+            to categorize datapoints based on cluster centers.
+        </p>
+        <p>
+            The Decision Tree Classifier is a supervised learning algorithm that works similarly to a dichotomous key,
+            where there are decision nodes and leaf nodes. Each decision node represents a division of the data into
+            parts by some rule that the algorithm decides based on the inputs and expected values of the data. Each leaf
+            node represents an outcome of that decision, which is then fed to the next decision node. If there is no
+            decision node, then that leaf node is the final output of the algorithm. This method will be used to
+            classify our inputs into recovered or non-recovered individuals. The decisions to split the inputs (ex.: "Is
+            the age above 65?") are the decision nodes while the outcomes are the leaf nodes.
+        </p>
+        <p>
+            A surface-level definition of the Random Forest Classifier is that it is a collection of Decision Trees. It
+            essentially compiles the results of multiple Decision Trees and outputs those results into one final output.
+            This can be done either through outputting the result that the majority of the Decision Trees outputted or
+            taking the average of those outputs. The former is mainly used for classification and will be used for our
+            use case.
+        </p>
+        <p>
+            Logistic Regression is a type of Discriminative supervised learning used for classification problems. It
+            uses a sigmoid function, which in turn uses a linear combination of inputs and features, to output a
+            soft-classification (probability) of the classification of inputs. In our case, we can use logistic
+            regression to output the probability that an input is in a certain class by setting a threshold value (0.5)
+            to put it into one of our two classes.
+        </p>
+        <p>
+            A Multi-Layer Perceptron (MLP) is a type of artificial neural network which uses layers of neurons, each
+            with activation functions, to find patterns in data and create decision boundaries to classify inputs. For
+            instance, to make a square boundary, one layer with four neurons may make each neuron take one side of the
+            square (up, down, left, right) as lines and compile them together to make a layer which outputs whether a
+            data point is inside the boundary. These layers are called hidden layers and form a network which can
+            generate complex decision boundaries (or functions in the case of regression) that simple and ordinary
+            methods such as K-means and logistic regression may not be able to find due to their limited scope and
+            applications. In our case especially, given the nature of the features that we input (both continuous and
+            discrete types), a decision boundary may turn out to be too complex or even impossible for other
+            classification algorithms to come up with.
+        </p>
+        <p>
+            You can see the performance of these models in our <a href="./midterm-report.html">midterm report</a>.
         </p>
     </section>
 
@@ -128,25 +168,21 @@
             Data
         </h1>
         <p>
-            We have already found some data online that we would analyze. The one dataset is from the FDA (US Food and
-            Drug
-            Administration) and CDC (Centers for Disease Control and Prevention), and the other one is from New York
-            Times. We
-            will try to get more official and more reliable data from more official websites. There are two datasets
-            that we
-            have downloaded so far: worldwide percentage of population vaccinated and worldwide adverse reactions after
-            vaccination. By using clustering methods, we will take deeper analysis on dividing them into several groups
-            based
-            on the factors of ages, gender, symptoms after vaccination, times for vaccination, and etc.
+            We have decided to use the Vaccine Adverse Event Reporting System (VAERS) dataset compiled by the Department
+            of Health and Human Services. It consists of over 34,000 reported incidents of adverse reactions to various
+            vaccines, among them the COVID-19 vaccine. A major problem with this dataset, however, is that its
+            formatting is inconsistent as data is frequently missing from some cells or structure of data across rows
+            and columns varies from cell to cell. For example, symptom and allergy reporting does not have a consistent
+            delimeter, and these may be important features in predicting someone's risk of death or other adverse
+            effects from taking the COVID vaccine. This is likely due to the fact the dataset is a compliation of
+            adverse event reporting from people across the United States and consistency would be very hard to achieve
+            among such a large population. To better feed the data into our model, we dropped unnecessary columns and
+            rows which had missing data, but by the end of it, we could only use the column stating whether someone had
+            recovered or not as the column which stated whether someone had died was reduced to two entries by the end
+            of our data cleaning. Unfortunately, this is the best dataset that we have at our disposal so we still
+            decided to use it for our project. On the bright side, it is quite a detailed list which we can work with in
+            the future to try and work with better or fill in using Naive Bayes or other semi-supervised learning.
         </p>
-    </section>
-
-    <section class="container" id="gantt">
-        <h1 class="display-1">
-            Gantt Chart
-        </h1>
-        <iframe class="col-lg-12"
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTBT74q5-KPR5MEZxuHLR9GAAU4KtLAYw_57hNiyMRV7Z7YHf-Pk2tD7eb22mdaoA/pubhtml?gid=369351077&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
     </section>
 
     <section class="container" id="resDisc">
@@ -156,6 +192,23 @@
         <p>
             Please click <a href="./midterm-report.html">here</a>.
         </p>
+    </section>
+
+    <section class="container" id="presentation">
+        <h1 class="display-1">
+            Presentation
+        </h1>
+        <video class="col-lg-12" src="./assets/video/project-proposal.mp4" controls>
+
+        </video>
+    </section>
+
+    <section class="container" id="gantt">
+        <h1 class="display-1">
+            Gantt Chart
+        </h1>
+        <iframe class="col-lg-12"
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTBT74q5-KPR5MEZxuHLR9GAAU4KtLAYw_57hNiyMRV7Z7YHf-Pk2tD7eb22mdaoA/pubhtml?gid=369351077&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
