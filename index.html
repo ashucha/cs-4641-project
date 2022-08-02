@@ -38,13 +38,13 @@
                         </a>
                     </li>
                     <li class="nav-item px-1 py-1">
-                        <a href="#method" class="nav-link">
-                            Method
+                        <a href="#data" class="nav-link">
+                            Data
                         </a>
                     </li>
                     <li class="nav-item px-1 py-1">
-                        <a href="#data" class="nav-link">
-                            Data
+                        <a href="#method" class="nav-link">
+                            Method
                         </a>
                     </li>
                     <li class="nav-item px-1 py-1">
@@ -98,90 +98,6 @@
             of 5, a fourth dose expected to be available to all Americans very soon, and COVID cases recently rising due
             to the raging BA 5 variant. These developments give lots of opportunities for misinformation to expand
             beyond what has already been spread.
-        </p>
-    </section>
-
-    <section class="container" id="method">
-        <h1 class="display-1">
-            Methods
-        </h1>
-
-        <p>
-            We used sklearn as our Python library to build, train, and test our models. Furthermore, we used pandas to
-            read and write our data from the .csv files and matplotlib and plotly to visualize our data.
-        </p>
-
-        <p>
-            Our initial attempts at a model for our data, which we implemented in the midterm report, considered a
-            combination of discrete and continuous variables that did not yield much cluster separation. These features
-            include the number of days someone spent in the hospital and how many doses of the vaccine they had.
-            Although these were considered to be possibly helpful, we ended up dropping them to find better and more
-            easily ascertainable features, such as the number of allergies and symptoms one has.
-        </p>
-
-        <p>
-            For our midterm report, we used various models to try and classify our data, including K-means, Random
-            Forest, and MLP. However, since our data did not allow for a good classification boundary, these algorithms
-            fared around 50-55% accuracy. As such, we tried ways of manipulating our data so as to make our data more
-            friendly to our models.
-        </p>
-
-        <p>
-            The methods we used included taking the limited number of death samples in our dataset and using the mean
-            and covariance of that population's features to generate more data just like it. However, when we merged
-            this generated data with our current data and assumed the points without death data to be negative samples,
-            our overall data ended up having all positive samples since our negative samples were dropped due to other
-            empty features. Based on the above approach, we tried to use the mean and covariance to classify existing
-            samples within our original dataset as being deaths based on the probability outputted by a multinormal pdf.
-            However, these results yielded only positive cases and we were thus not able to use the resulting data in
-            our models.
-        </p>
-
-        <p>
-            After these methods failed, we decided that the main problem lay in the features that we selected. Hence, we
-            scoured the vaccination and symptoms datasets to try to identify features that we could work with. The
-            result was age, history, allergies, and symptoms. We plotted these features and found that an at least
-            somewhat discernible decision boundary existed between the two clusters for each feature. As such, we
-            inputted these models into SVM, Decision Tree, and Logistic Regression models and manipulated the
-            hyperparameters of each to yield more accurate results. Here is a more in-depth look into each algorithm:
-        </p>
-
-        <h3>SVM:</h3>
-        <p>
-            We used sklearn's SVM classifier, SVC, to classify our data into deaths and non-deaths. Although our data
-            was not linearly separable and had some overlap, we felt that SVM could possibly yield better accuracy as it
-            would project our data to a different dimension than what we had, which may make the data more linearly
-            separable. We thought that this would show an improvement as opposed to Logistic Regression. Our SVM model
-            used a linear kernel since the other options, such as polynomial SVM, yielded consistently worse accuracy,
-            specifically 2% worse than the linear model. We also left the C value to the default of 1 since changing it
-            had a negligible effect on its performance, but instead increased SVM's runtime as we increased C. The C
-            value is directly proportional to how wide we want our decision boundary's margin to be when classifying
-            points, so since we had quite a bit of overlap between classes, a margin would not be of much use to our
-            model, which may explain the negligible effect on accuracy.
-        <p>
-
-        <h3>Decision Tree:</h3>
-        <p>
-            Our data was not linearly separable, and so the Decision Tree algorithm may not look like the best method.
-            However, we felt that given the nature of our data, that there are often constraints beyond which someone's
-            condition becomes serious. For example, if a person is over 90, their risk of death from the vaccine would
-            increase substantially, especially since they may also have a long history of conditions and much more
-            severe and numerous symptoms. Thus, we felt that a Decision Tree classifier would fare well. We set the DT
-            to use entropy, or the uncertainty of the resulting outcomes, to judge the quality of a split. For example,
-            if during training, a split yields positives of 90% and negatives of 10%, then our split may be overfitting
-            as it yields a disproportionate number of positives compared to negatives, meaning our entropy is relatively
-            low. Thus, we would try to use majority voting for that split and make it decide that all inputs are
-            outputted as positive. Also, we limited the maximum depth of our tree (how many layers of nodes it has) to 8
-            as that yielded the optimal performance measures (neither underfit nor overfit).
-        </p>
-
-        <h3>Logistic Regression:</h3>
-        <p>
-            To check if SVM was an improvement on normal linear classification, we used Logistic Regression to try and
-            classify our data. We faced the same challenges as in SVM and set the solver to LBFGS, which uses the second
-            derivative of the objective function (second gradient) to reach an optimum. This configuration yielded the
-            best results, but they were very similar to that of SVM. Hence, SVM did not significantly improve on normal
-            classification methods.
         </p>
     </section>
 
@@ -311,6 +227,90 @@
             distributed but situated to the left of the positive data. As such, there seems to be a possible decision
             boundary that could separate the two classes, albeit with quite a bit of error. This behavior is relatively
             consistent across all feature pairs.
+        </p>
+    </section>
+
+    <section class="container" id="method">
+        <h1 class="display-1">
+            Methods
+        </h1>
+
+        <p>
+            We used sklearn as our Python library to build, train, and test our models. Furthermore, we used pandas to
+            read and write our data from the .csv files and matplotlib and plotly to visualize our data.
+        </p>
+
+        <p>
+            Our initial attempts at a model for our data, which we implemented in the midterm report, considered a
+            combination of discrete and continuous variables that did not yield much cluster separation. These features
+            include the number of days someone spent in the hospital and how many doses of the vaccine they had.
+            Although these were considered to be possibly helpful, we ended up dropping them to find better and more
+            easily ascertainable features, such as the number of allergies and symptoms one has.
+        </p>
+
+        <p>
+            For our midterm report, we used various models to try and classify our data, including K-means, Random
+            Forest, and MLP. However, since our data did not allow for a good classification boundary, these algorithms
+            fared around 50-55% accuracy. As such, we tried ways of manipulating our data so as to make our data more
+            friendly to our models.
+        </p>
+
+        <p>
+            The methods we used included taking the limited number of death samples in our dataset and using the mean
+            and covariance of that population's features to generate more data just like it. However, when we merged
+            this generated data with our current data and assumed the points without death data to be negative samples,
+            our overall data ended up having all positive samples since our negative samples were dropped due to other
+            empty features. Based on the above approach, we tried to use the mean and covariance to classify existing
+            samples within our original dataset as being deaths based on the probability outputted by a multinormal pdf.
+            However, these results yielded only positive cases and we were thus not able to use the resulting data in
+            our models.
+        </p>
+
+        <p>
+            After these methods failed, we decided that the main problem lay in the features that we selected. Hence, we
+            scoured the vaccination and symptoms datasets to try to identify features that we could work with. The
+            result was age, history, allergies, and symptoms. We plotted these features and found that an at least
+            somewhat discernible decision boundary existed between the two clusters for each feature. As such, we
+            inputted these models into SVM, Decision Tree, and Logistic Regression models and manipulated the
+            hyperparameters of each to yield more accurate results. Here is a more in-depth look into each algorithm:
+        </p>
+
+        <h3>SVM:</h3>
+        <p>
+            We used sklearn's SVM classifier, SVC, to classify our data into deaths and non-deaths. Although our data
+            was not linearly separable and had some overlap, we felt that SVM could possibly yield better accuracy as it
+            would project our data to a different dimension than what we had, which may make the data more linearly
+            separable. We thought that this would show an improvement as opposed to Logistic Regression. Our SVM model
+            used a linear kernel since the other options, such as polynomial SVM, yielded consistently worse accuracy,
+            specifically 2% worse than the linear model. We also left the C value to the default of 1 since changing it
+            had a negligible effect on its performance, but instead increased SVM's runtime as we increased C. The C
+            value is directly proportional to how wide we want our decision boundary's margin to be when classifying
+            points, so since we had quite a bit of overlap between classes, a margin would not be of much use to our
+            model, which may explain the negligible effect on accuracy.
+        <p>
+
+        <h3>Decision Tree:</h3>
+        <p>
+            Our data was not linearly separable, and so the Decision Tree algorithm may not look like the best method.
+            However, we felt that given the nature of our data, that there are often constraints beyond which someone's
+            condition becomes serious. For example, if a person is over 90, their risk of death from the vaccine would
+            increase substantially, especially since they may also have a long history of conditions and much more
+            severe and numerous symptoms. Thus, we felt that a Decision Tree classifier would fare well. We set the DT
+            to use entropy, or the uncertainty of the resulting outcomes, to judge the quality of a split. For example,
+            if during training, a split yields positives of 90% and negatives of 10%, then our split may be overfitting
+            as it yields a disproportionate number of positives compared to negatives, meaning our entropy is relatively
+            low. Thus, we would try to use majority voting for that split and make it decide that all inputs are
+            outputted as positive. Also, we limited the maximum depth of our tree (how many layers of nodes it has) to 8
+            as that yielded the optimal performance measures (neither underfit nor overfit).
+        </p>
+
+        <h3>Logistic Regression:</h3>
+        <p>
+            To check if SVM was an improvement on normal linear classification, we used Logistic Regression to try and
+            classify our data. We faced the same challenges as in SVM and set the solver to LBFGS, which uses the second
+            derivative of the objective function (second gradient) to reach an optimum. This configuration yielded the
+            best results, but they were very similar to that of SVM. Hence, SVM did not significantly improve on normal
+            classification methods.
         </p>
     </section>
 
