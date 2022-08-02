@@ -225,8 +225,11 @@
             As you can see, there is a fair amount of overlap between these two features in terms of the positive and
             negative cases. However, the positive data is more right-heavy while the negative data is more evenly
             distributed but situated to the left of the positive data. As such, there seems to be a possible decision
-            boundary that could separate the two classes, albeit with quite a bit of error. This behavior is relatively
-            consistent across all feature pairs.
+            boundary that could separate the two classes, albeit with quite a bit of error. It can also be observed that
+            as the features increase in value, the chance of death also increases. For example, according to the graph,
+            a person who is around 100 years old has a very high chance of death from an adverse reaction to the vaccine
+            since their immune system may not be able to fight off the adverse reaction as effectively as someone who is
+            around 40 years old. These behaviors are relatively consistent across all feature pairs.
         </p>
     </section>
 
@@ -535,7 +538,11 @@
             features with minimal correlation amongst each other, as well as our model selection and parameter tuning,
             were effective in predicting if a person has a chance of dying from the COVID vaccine, given that they had
             an adverse reaction. Of all the models, our Decision Tree model was the best-performing as it consistently
-            had an accuracy about 2% higher than the other models.
+            had an accuracy about 2% higher than the other models. In addition, all of our models followed our expected
+            trends that higher feature values correlate to higher chances of death. For instance, the SVM and LR
+            boundaries show that a person who is older than 80 years old has a significantly higher chance of death from
+            an adverse reaction to the vaccine than someone who is even 60 years old. This trend further reinforces our
+            confidence in our models' outputs.
         </p>
         <p>
             Some limiting factors to our models' performances include no clear separation between
@@ -544,11 +551,14 @@
             Thus, the number of pre-existing conditions that somebody suffered from may have been fed incorrectly into
             the model. Also, the HHS says that an adverse reaction to a vaccine should be reported even if it is not
             clear that the vaccine was the cause of that adverse reaction. Thus, the data may not, in fact, be
-            completely about people who suffered an adverse reaction largely due to the vaccine. However, given the
-            results that we generated, we are confident that our models are a step in the right direction towards better
-            understanding adverse reactions to vaccine and allowing healthcare providers and the general public to
-            better understand if a person should take the vaccine and if they experience an adverse reaction, what their
-            risk of death or other serious consequences are.
+            completely about people who suffered an adverse reaction largely due to the vaccine.
+        </p>
+
+        <p>
+            However, given the results that we generated, we are confident that our models are a step in the right
+            direction towards better understanding adverse reactions to vaccine and allowing healthcare providers and
+            the general public to better understand if a person should take the vaccine and if they experience an
+            adverse reaction, what their risk of death or other serious consequences are.
         </p>
     </section>
 
