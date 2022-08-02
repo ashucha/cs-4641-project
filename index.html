@@ -75,7 +75,9 @@
             Though COVID-19 vaccine has proven its efficiency, many still remain hesitant due to potential side effects.
             Side effects include the majority reporting mild to moderate symptoms, such as fever and fatigue, but these
             symptoms generally would not cause long-term conditions, though rare cases of severe symptoms or potential
-            death are possible. We will use machine learning to build a model that helps people make a decision of
+            death are possible. We will use machine learning to build a model that helps people in the general public
+            make a decision on as well as healthcare providers to recommend whether or not someone should take the
+            vaccine and how severe their case might be (chance of death) if they suffer an adverse reaction of
             whether to take the vaccine or not by predicting a person's chance of death from taking the vaccine given
             indicating factors, such as age and gender.
         </p>
@@ -103,6 +105,12 @@
         <h1 class="display-1">
             Methods
         </h1>
+
+        <p>
+            We used sklearn as our Python library to build, train, and test our models. Furthermore, we used pandas to
+            read and write our data from the .csv files and matplotlib and plotly to visualize our data.
+        </p>
+
         <p>
             Our initial attempts at a model for our data, which we implemented in the midterm report, considered a
             combination of discrete and continuous variables that did not yield much cluster separation. These features
@@ -209,13 +217,20 @@
             (“Y”, which means the person died), so our data had to be balanced out. For this, we assigned the rest of
             the rows as negatives (possible since people rarely die of the vaccine) and randomly sampled an equivalent
             number of these negative rows, which helped to balance out the data we fed into our models. By the end of
-            our cleaning process, we fed in 3,466 samples to our models with a train-test split of 0.8 for training and
-            0.2 for testing. Despite its shortcomings, this dataset is quite a detailed compilation which we worked with
-            fairly successfully to predict a person's chance of dying from the COVID vaccine.
+            our cleaning process, we fed in 3,466 samples (1,733 positives and negatives) to our models with a
+            train-test split of 0.8 for training and 0.2 for testing. Despite its shortcomings, this dataset is quite a
+            detailed compilation which we worked with fairly successfully to predict a person's chance of dying from the
+            COVID vaccine.
         </p>
 
         <p>
-            Here is the 5-number summary of our cleaned data:
+            Below is a preview of our data:
+        </p>
+
+        <img src="./assets/img/vaers_df_head.PNG" alt="">
+
+        <p>
+            Here is the 5-number summary of our cleaned data ("DIED" = 0 means non-death while 1 means death):
         </p>
 
         <table class="table table-striped table-bordered">
@@ -519,7 +534,11 @@
             Overall, our methods of data collection and cleaning, namely minimizing the number of features and using
             features with minimal correlation amongst each other, as well as our model selection and parameter tuning,
             were effective in predicting if a person has a chance of dying from the COVID vaccine, given that they had
-            an adverse reaction. Some limiting factors to our models' performances include no clear separation between
+            an adverse reaction. Of all the models, our Decision Tree model was the best-performing as it consistently
+            had an accuracy about 2% higher than the other models.
+        </p>
+        <p>
+            Some limiting factors to our models' performances include no clear separation between
             classes and vague and inconsistent definitions throughout the data. For example, there was a largely
             consistent but still somewhat inconsistent comma delimiter used throughout the medical history reporting.
             Thus, the number of pre-existing conditions that somebody suffered from may have been fed incorrectly into
